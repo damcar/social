@@ -47,7 +47,7 @@ class CustomUnsubscribe(MassMailController):
         mailing = request.env["mail.mass_mailing"].sudo().browse(mailing_id)
         # Mass mailing list contacts are a special case because they have a
         # subscription management form
-        if mailing.mailing_model_real == 'mail.mass_mailing.contact':
+        if mailing.mailing_model_name == 'mail.mass_mailing.contact':
             result = super(CustomUnsubscribe, self).mailing(
                 mailing_id, email, res_id, token=token, **post)
             result.qcontext.update({
